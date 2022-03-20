@@ -7,7 +7,7 @@ const userController = {
     });
   },
   getUser: (req, res) => {
-    User.findById(req.params.id).then((data) => {
+    User.findById(req.params.id).populate("thoughts").populate("friends").then((data) => {
       res.json(data);
     });
   },
@@ -16,6 +16,24 @@ const userController = {
       res.json(data);
     });
   },
+  updateUser: (req, res) => {
+          User.findByIdAndUpdate(req.params.id,req.body,{new: true})
+          .then((data) => {
+                    res.json(data);
+          }).catch((err)=>{
+                    console.log(error)
+                    res.json(error)
+          })
+},
+deleteUser: (req, res) => {
+          User.findByIdAndDelete(req.params.id,{new: true})
+          .then((data) => {
+                    res.json(data);
+          }).catch((err)=>{
+                    console.log(error)
+                    res.json(error)
+          })
+  }
 };
 
 module.exports = userController;
