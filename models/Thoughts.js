@@ -1,8 +1,9 @@
 // the same as user except for reaction because it  is a sub doc.
 //in class code in mini projects
 
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require("mongoose")
 const  dateFormat = require("../utils/dateFormat")
+const reactionSchema = require("./reaction")
 
 const thoughtSchema = new Schema({
     thoughtText: {
