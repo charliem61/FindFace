@@ -6,6 +6,6 @@ router.route("/").get(getUsers).post(addUser)
 
 router.route("/:id").get(getUser).put(updateUser).delete(deleteUser)
 
-router.route("/:id/friends/:friendsId").post(addFriend).delete(deleteFriend)
+router.route("/:id/friends/:friendId").post(addFriend).delete(deleteFriend)
 
 module.exports = router;
