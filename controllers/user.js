@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const {User, Thought} = require("../models");
 
 const userController = {
   getUsers: (req, res) => {
@@ -7,9 +7,12 @@ const userController = {
     });
   },
   getUser: (req, res) => {
-    User.findById(req.params.id).populate("thoughts").populate("friends").then((data) => {
-      res.json(data);
-    });
+    User.findById(req.params.id)
+      .populate("thoughts")
+      .populate("friends")
+      .then((data) => {
+        res.json(data);
+      });
   },
   addUser: (req, res) => {
     User.create(req.body).then((data) => {
@@ -17,23 +20,57 @@ const userController = {
     });
   },
   updateUser: (req, res) => {
-          User.findByIdAndUpdate(req.params.id,req.body,{new: true})
-          .then((data) => {
-                    res.json(data);
-          }).catch((err)=>{
-                    console.log(error)
-                    res.json(error)
-          })
-},
-deleteUser: (req, res) => {
-          User.findByIdAndDelete(req.params.id,{new: true})
-          .then((data) => {
-                    res.json(data);
-          }).catch((err)=>{
-                    console.log(error)
-                    res.json(error)
-          })
-  }
+    User.findByIdAndUpdate(req.params.id, req.body, { new: true })
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((err) => {
+        console.log(error);
+        res.json(error);
+      });
+  },
+  deleteUser: (req, res) => {
+    User.findByIdAndDelete(req.params.id, { new: true })
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((err) => {
+        console.log(error);
+        res.json(error);
+      });
+  },
+  addFriend: (req, res) => {
+    User.findOneAndUpdate(
+      req.params.id,
+      {
+        $addToSet: { friends: req.params.friendId },
+      },
+      { new: true }
+    )
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((err) => {
+        console.log(error);
+        res.json(error);
+      });
+  },
+  deleteFriend: (req, res) => {
+    User.findOneAndUpdate(
+      req.params.id,
+      {
+        $pull: { friends: req.params.friendId },
+      },
+      { new: true }
+    )
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((err) => {
+        console.log(error);
+        res.json(error);
+      });
+  },
 };
 
 module.exports = userController;
