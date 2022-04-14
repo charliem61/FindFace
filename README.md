@@ -13,15 +13,20 @@ With my code I am able to create users & thoughts. Delete users & thoughts, as w
 
 The Standouts:
 
-It works correctly. It meets the grading criteria.
+It works correctly. It meets the grading criteria. Also after much elapsed time trying to obtain sharable screen recordings that were clipped and long enough to show the whole app, I ended up making a youtube channel for these videos to be easily viewable by Graders in the future out of my own frustration.
 
 Challenges Faced:
 
-Making the demonstation video and its several takes to get a decent enough to share. 
+Making the demonstation videos and its their SEVERAL takes to get a decent set of clips good enough to share. 
 
 
 Demonstration:
 
-Part 1:
+Part 1}
 https://youtu.be/7a1unHVJxlQ
 
+Part 2}
+https://youtu.be/SjaQ3fD3qGw
+
+Part 3}
+https://youtu.be/rZQ6EaEVVSs
